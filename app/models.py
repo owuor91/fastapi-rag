@@ -38,3 +38,9 @@ class HealthResponse(BaseModel):
     status: str
     vector_db_status: str
     total_documents: int
+
+
+
+class QueryResponse(BaseModel):
+    answer: str
+    source_chunks: List[SourceChunk]
