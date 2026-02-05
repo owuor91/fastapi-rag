@@ -7,7 +7,7 @@ class Settings(BaseSettings):
     ANTHROPIC_API_KEY: str = ""
 
     EMBEDDING_MODEL: str = "sentence-transformers/all-MiniLM-L6-v2"
-    LLM_MODEL: str = "gpt-3.5-turbo"
+    LLM_MODEL: str = "gpt-5-mini"
     LLM_PROVIDER: str = "openai"  # Options: 'openai', 'anthropic'
 
     CHUNK_SIZE: int = 1000

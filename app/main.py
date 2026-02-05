@@ -27,14 +27,14 @@ document_processor = None
 
 
 @asynccontextmanager
-async def lifespan():
+async def lifespan(app: FastAPI):
     global embedding_service, vector_store, llm_service, document_processor
     settings = get_settings()
 
     print("Starting up and initializing services...")
 
     embedding_service = EmbeddingService(
-        model_name=settings.embedding_model_name
+        model_name=settings.EMBEDDING_MODEL
     )
 
     vector_store = VectorStore(
@@ -130,7 +130,7 @@ async def upload_document(
         print(f"Document processed into {len(chunks)} chunks.")
 
         print("Generating embeddings for chunks...")
-        embeddings = embedding_service.get_embeddings(chunks)
+        embeddings = embedding_service.embed_batch(chunks)
         print(f"Created {len(embeddings)} embeddings.")
 
         metadata = [

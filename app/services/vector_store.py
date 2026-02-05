@@ -12,7 +12,7 @@ class VectorStore:
     ):
         self.client = chromadb.PersistentClient(
             path=persist_directory,
-            settings=Settings(anonimized_telemetry=False),
+            settings=Settings(anonymized_telemetry=False),
         )
 
         self.collection = self.client.get_or_create_collection(

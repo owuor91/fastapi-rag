@@ -1,11 +1,8 @@
 from typing import List, BinaryIO
 import os
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_community.document_loaders import (
-    PyPDFLoader,
-    TextLoader,
-    DocxLoader,
-)
+from langchain_community.document_loaders import PyPDFLoader, TextLoader
+from langchain_community.document_loaders.word_document import Docx2txtLoader
 
 
 class DocumentProcessor:
@@ -27,7 +24,7 @@ class DocumentProcessor:
         elif file_extension in [".txt", ".md"]:
             loader = TextLoader(file_path, encoding="utf-8")
         elif file_extension in [".docx", ".doc"]:
-            loader = DocxLoader(file_path)
+            loader = Docx2txtLoader(file_path)
         else:
             raise ValueError(f"Unsupported file type: {file_extension}")
 
